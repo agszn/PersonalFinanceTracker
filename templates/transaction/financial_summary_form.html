@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Financial Summary Form{% endblock %}
+
+{% block style %}
+<style>
+    .container {
+        margin-top: 50px;
+    }
+    .card {
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+    .btn-custom {
+        background-color: #00796b;
+        color: #fff;
+    }
+    .btn-custom:hover {
+        background-color: #004d40;
+        color: #fff;
+    }
+    .form-control:focus {
+        border-color: #00796b;
+        box-shadow: 0 1px 0 0 #00796b;
+    }
+    .form-label {
+        color: #00796b;
+    }
+</style>
+{% endblock %}
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+<div class="container bg-image" style="margin-top: 10%;">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Financial Summary Form</h5>
+            <form method="post" action="{% url 'financial_summary_update' %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form-group">
+                    <button type="submit" class="btn btn-custom">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Import Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

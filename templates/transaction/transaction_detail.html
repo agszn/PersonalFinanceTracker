@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block title %}Transaction Detail{% endblock %}
+
+{% block style %}
+    <!-- Import Chart.js for graphical summary -->
+    <style>
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .btn-primary {
+            background-color: #00796b;
+            border-color: #00796b;
+        }
+        .btn-primary:hover {
+            background-color: #004d40;
+            border-color: #004d40;
+        }
+        .card-body {
+            text-align: center;
+        }
+        canvas {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+{% endblock %}
+
+{% block index %}
+{% endblock %}
+{% block content %}
+    <div class="container" style="margin-top: 10%;">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Transaction Detail</h5>
+                <p><strong>Type:</strong> {{ transaction.transaction_type }}</p>
+                <p><strong>Amount:</strong> {{ transaction.amount }}</p>
+                <p><strong>Description:</strong> {{ transaction.description }}</p>
+                <p><strong>Date:</strong> {{ transaction.date }}</p>
+                <a href="{% url 'transaction_update' transaction.pk %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'transaction_list' %}" class="btn btn-secondary">Back to List</a>
+            </div>
+        </div>
+
+        <!-- Graphical Summary Section -->
+        <!-- <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Transaction Summary</h5>
+                <canvas id="summaryChart"></canvas>
+            </div>
+        </div> -->
+    </div>
+
+    <!-- Import Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- JavaScript to render Chart.js -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('summaryChart').getContext('2d');
+            const summaryChart = new Chart(ctx, {
+                type: 'bar', // You can change this to 'line', 'pie', etc.
+                data: {
+                    labels: ['Income', 'Expense'],
+                    datasets: [{
+                        label: 'Transaction Summary',
+                        data: [{{ total_income }}, {{ total_expenses }}], // Replace with dynamic values
+                        backgroundColor: ['#4caf50', '#f44336'],
+                        borderColor: ['#388e3c', '#d32f2f'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}

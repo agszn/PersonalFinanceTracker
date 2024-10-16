@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Contact Form{% endblock %}
+
+{% block style %}
+<style>
+
+    input[type=text], input[type=email], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+        font-size: 16px;
+    }
+
+    input[type=submit] {
+        background-color: #04AA6D;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+        border-radius: 5%;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+
+</style>
+{% endblock %}
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+
+<div class="page-banner overlay-dark bg-image" style="margin-top: 7%; background-image: url(../assets/img/bg_image_1.jpg);">
+    <div class="banner-section">
+      <div class="container text-center wow fadeInUp">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Contact</li>
+          </ol>
+        </nav>
+        <h1 class="font-weight-normal">Contact</h1>
+      </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+  </div> <!-- .page-banner -->
+
+  <div class="page-section" >
+<div class="container" style="background-color: #fff;"><br>
+    <form method="post" action="{% url 'contact' %}" id="contactForm">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary" onclick="showSuccessModal()" style="display: block; margin: 0 auto; padding: 1%;">Submit</button>
+    <br>
+    </form>
+
+    <!-- Modal -->
+    <div class="modal" tabindex="-1" role="dialog" id="successModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Thank You!</h5>
+                    <button type="button" class="close" onclick="hideSuccessModal()">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Thank you for contacting us!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  </div>
+
+<script>
+    function showSuccessModal() {
+        document.getElementById('successModal').style.display = 'block';
+        setTimeout(hideSuccessModal, 5000);
+    }
+
+    function hideSuccessModal() {
+        document.getElementById('successModal').style.display = 'none';
+    }
+</script>
+{% endblock %}

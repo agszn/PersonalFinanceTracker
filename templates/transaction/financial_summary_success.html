@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Success{% endblock %}
+
+{% block style %}
+    <!-- Import Bootstrap CSS -->
+    <style>
+
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .btn-custom {
+            background-color: #00796b;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: #004d40;
+        }
+        .card-body {
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+    <div class="container bg-image" style="margin-top: 10%;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Success</h5>
+                <p>Financial Summary Updated Successfully!</p>
+                <a href="{% url 'dashboard' %}" class="btn btn-custom">Go to Dashboard</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

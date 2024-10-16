@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Success{% endblock %}
+
+{% block style %}
+    <!-- Import Bootstrap CSS -->
+    
+    <style>
+
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 400px;
+            margin: 2rem;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card-title {
+            color: #004d40;
+        }
+        .btn-primary {
+            background-color: #00796b;
+            color: white;
+            margin-top: 1rem;
+        }
+        .btn-primary:hover {
+            background-color: #004d40;
+        }
+    </style>
+{% endblock %}
+
+{% block index %}
+{% endblock %}
+{% block content %}
+    <div class="card bg-image" style="margin-top: 10%;">
+        <div class="card-body text-center">
+            <h5 class="card-title">Success</h5>
+            <p>Transaction Submitted Successfully!</p>
+            <a href="{% url 'transaction_create' %}" class="btn btn-primary">Add Another Transaction</a>
+        </div>
+    </div>
+
+    <!-- Import Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

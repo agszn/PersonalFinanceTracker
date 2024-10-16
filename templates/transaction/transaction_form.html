@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% block title %}Transaction Form{% endblock %}
+
+{% block style %}
+    <!-- Import Bootstrap CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            
+            color: #333;
+        }
+        
+        .container {
+            margin-top: 5%;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+        }
+
+        .card {
+            border: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            background-color: #00796b;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: #004d40;
+            box-shadow: 0 5px 15px rgba(0, 121, 107, 0.3);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-title {
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+            color: #00796b;
+        }
+
+        .form-control {
+        border-radius: 25px;
+        padding: 0.75rem 1.25rem;
+        border: 1px solid #341616;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        background-color: #f9f9f9; /* Light background color */
+        width: 100%;
+        color: #333; /* Text color */
+    }
+
+    input[type="text"], input[type="number"], input[type="email"], select, textarea {
+        border: none;
+        padding: 0.75rem 1.25rem;
+        border-radius: 25px;
+        margin-bottom: 1rem;
+        width: 100%;
+        appearance: none;
+        background-color: #5ebec4; /* Background color before hover */
+        background-image: url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSIjMDA3OTZiIiBoZWlnaHQ9IjEyIiB2aWV3Qm94PSIwIDAgMTIgMTIiIHdpZHRoPSIxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMS4yOTMgMy43ODlsMi45OTctMi45OTdMMTMuMzM1IDEuNzk3IDEuNzk3IDEzLjMzNWwtNC41NCA0LjU0aC02Ljc2N3ptMTAtNi42MjhsLTIuMzk4IDIuMzk3bC4wMTMtNi42MjQtNC40MjEtLjA5bC00LjQyMS4wOS4wMTMgNi42MjQtMi4zOTctMi4zOTdNOS40MTkgMEg0LjU4M2wtNC41NCA0LjU0aDEzLjA1OGw0LjU0LTQuNTRoLTQuOTg4eiIvPjwvc3ZnPg==');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 12px 12px;
+        color: #333; /* Text color before hover */
+    }
+
+    input[type="text"]:focus, input[type="number"]:focus, input[type="email"]:focus, select:focus, textarea:focus {
+        border-color: #00796b;
+        box-shadow: 0 0 10px rgba(0, 121, 107, 0.25);
+        background-color: #ffffff;
+    }
+
+        .form-control:focus {
+            border-color: #00796b;
+            box-shadow: 0 0 10px rgba(0, 121, 107, 0.25);
+            background-color: #ffffff;
+        }
+
+
+        .form-label {
+            color: #00796b;
+            font-weight: bold;
+        }
+
+        .total-balance {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #004d40;
+            margin-bottom: 2rem;
+        }
+
+        textarea {
+            resize: none; /* Prevents resizing of the textarea */
+        }
+    </style>
+{% endblock %}
+
+{% block index %}
+{% endblock %}
+{% block content %}
+<center>
+    <div class="container" style="margin-top: 10%;">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Transaction Form</h5>
+                <p class="total-balance">Total Balance: ₹{{ total_balance }}</p>
+                <form method="post" action="{% url 'transaction_create' %}">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</center>
+
+<!-- Import Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

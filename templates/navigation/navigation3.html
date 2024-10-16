@@ -1,0 +1,51 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+  <a class="navbar-brand font-weight-bolder mr-3" href="/"><img src="https://static.vecteezy.com/system/resources/previews/007/264/787/original/business-finance-logo-template-illustration-free-vector.jpg" width="150px" style="border-radius: 50%;"></a>
+  <button class="navbar-light navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarsDefault">
+    <ul class="navbar-nav mr-auto align-items-center">
+        <h1 class="bg-graylight border-0 font-weight-bold"><a href="/">Personal Finance Tracker</a></h1>
+    </ul>
+    <ul class="navbar-nav ml-auto align-items-center">
+      {% if request.user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile' %}"><img class="rounded-circle mr-2" src="{% static 'gallery/assets/img/av.png' %}" width="30"></a>
+        </li>
+      <li class="nav-item">
+      <a class="nav-link active" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">About</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'transaction_create' %}">Transaction Create</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'transaction_list' %}">Transaction List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'transaction-list-create' %}">RestAPI GET_POST</a>
+      </li>
+
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+      </li>
+      <form method="post" action="{% url 'logout' %}" class="form-inline my-2 my-lg-0 ">
+        {% csrf_token %}
+        <button type="submit" class="btn  my-2 my-sm-0 text-dark">Logout</button>
+    </form>
+    {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'login' %}">Login</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'register' %}">Register</a>
+    </li>
+    {% endif %}
+    </ul>
+  </div>
+  </nav>

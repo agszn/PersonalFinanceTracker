@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}About{% endblock %}
+
+{% block style %}
+    <!-- Custom Styles -->
+    <style>
+        .page-banner {
+            background-size: cover;
+            background-position: center;
+            padding: 5rem 0;
+        }
+
+        .banner-section {
+            padding: 2rem;
+            color: #fff;
+        }
+
+        .page-section {
+            padding: 3rem 0;
+        }
+
+        .card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 2rem;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-text {
+            font-size: 1rem;
+        }
+    </style>
+{% endblock %}
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+<div class="page-banner overlay-dark bg-image" style="background-image: url({% static 'img/bg_image_1.jpg' %});">
+    <div class="banner-section">
+        <div class="container text-center wow fadeInUp">
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">About</li>
+                </ol>
+            </nav>
+        </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+</div> <!-- .page-banner -->
+
+<div class="page-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 wow fadeInUp">
+                <h1 class="text-center">Welcome to Your Personal Finance Tracker</h1>
+                <div class="flow-text">
+                    <p>Our Personal Finance Tracker is a comprehensive web application designed to help users manage their finances effectively. With features for tracking transactions, generating financial summaries, and visualizing spending patterns, it provides a user-friendly interface for both individuals and families.</p>
+                    
+                    <h5>Key Features:</h5>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Transaction Management</h5>
+                            <p class="card-text">Easily add, view, update, and delete financial transactions.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Financial Summaries</h5>
+                            <p class="card-text">Generate and view detailed summaries of your financial activities.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Secure Authentication</h5>
+                            <p class="card-text">Integrated with Django for secure user authentication and data protection.</p>
+                        </div>
+                    </div>
+
+                    <h5>Technology Stack:</h5>
+                    <p>Our application uses a modern tech stack including Django for the backend, Vue.js for the frontend, and Bootstrap for the UI design. This combination ensures a robust, scalable, and visually appealing application.</p>
+
+                    <h5>Get Started:</h5>
+                    <p>Sign up or log in to start managing your finances effectively. Explore features and customize your experience to fit your financial needs.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

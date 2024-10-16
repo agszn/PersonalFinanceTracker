@@ -1,0 +1,29 @@
+<!-- templates/custom_browsable_api.html -->
+{% extends "rest_framework/api.html" %}
+
+{% block content %}
+  <h1>Create a New Transaction</h1>
+  <form method="post" action="{% url 'transaction_list_create' %}">
+      {% csrf_token %}
+      <label for="amount">Amount:</label>
+      <input type="text" id="amount" name="amount" required>
+
+      <label for="transaction_type">Transaction Type:</label>
+      <select id="transaction_type" name="transaction_type" required>
+          <option value="income">Income</option>
+          <option value="expense">Expense</option>
+      </select>
+
+      <label for="description">Description:</label>
+      <textarea id="description" name="description"></textarea>
+
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required>
+
+      <button type="submit">Submit</button>
+  </form>
+  
+  <hr>
+  
+  {{ block.super }}
+{% endblock %}
